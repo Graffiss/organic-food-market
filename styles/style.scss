@@ -1,1 +1,17 @@
+$main-green: #cdd661;
+$main-yellow: #ffc547;
+$main-red: #ff7352;
+$main-blue: #01abce;
+$main-footer: #3f3d40;
+
+@mixin flex($justify, $align, $direction) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+}
+
 @import 'global';
+@import 'main';
+@import 'nav';
+@import 'content';

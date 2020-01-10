@@ -1,0 +1,36 @@
+.main-head {
+	max-height: 10vh;
+}
+
+nav {
+	background: white;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	padding: 2rem 0rem;
+
+	li {
+		list-style: none;
+	}
+
+	a {
+		color: black;
+		font-size: 1.6rem;
+		text-decoration: none;
+	}
+}
+
+#logo {
+	display: flex;
+	flex: 1 1 20rem;
+	font-size: 2rem;
+	color: $main-green;
+	justify-content: flex-end;
+	padding-right: 2%;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: space-around;
+	flex: 1 1 20rem;
+}
