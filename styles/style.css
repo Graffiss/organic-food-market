@@ -15,6 +15,10 @@ body {
   color: white;
 }
 
+a {
+  text-decoration: none;
+}
+
 .main-background {
   min-height: 100vh;
   display: -webkit-box;
@@ -138,6 +142,16 @@ nav a {
 }
 
 .green-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1/3;
@@ -185,5 +199,43 @@ footer {
   -ms-grid-row-span: 3;
   grid-row: 6/9;
   background: #3f3d40;
+}
+
+/* content section */
+.green-text p {
+  font-size: 3.6rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0.5rem 0.5rem;
+}
+
+.green-text button {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 2.6rem;
+  border: 0.2rem solid white;
+  border-radius: 1.5rem;
+  padding: 1rem 4rem;
+  background: #cdd661;
+  margin: 0.5rem 0.5rem;
+  cursor: pointer;
+}
+
+.green-text button a {
+  color: white;
+}
+
+.store {
+  min-height: 70vh;
+  min-width: 60vw;
+  background: #ffc547;
 }
 /*# sourceMappingURL=style.css.map */
