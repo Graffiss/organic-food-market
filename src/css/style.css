@@ -238,4 +238,13 @@ footer {
   min-width: 60vw;
   background: #ffc547;
 }
+
+.menu-product {
+  border-bottom: 2px solid black;
+  margin-bottom: 2rem;
+}
+
+.menu-product img {
+  width: 200px;
+}
 /*# sourceMappingURL=style.css.map */
