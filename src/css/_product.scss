@@ -1,8 +1,22 @@
+li {
+	list-style-type: none;
+}
+
 .menu-product {
 	border-bottom: 2px solid black;
-	margin-bottom: 2rem;
+	margin: 2rem;
+	font-size: 1.7rem;
 
 	img {
 		width: 200px;
+	}
+	button {
+		color: white;
+		border: 1px solid white;
+		border-radius: 1rem;
+		background: transparent;
+		cursor: pointer;
+		padding: 1rem 2rem;
+		margin: 2rem 0;
 	}
 }

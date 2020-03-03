@@ -1,6 +1,7 @@
 import React from 'react';
 import Product from './components/Product';
 import productsDatabase from './products-database';
+import Cart from './components/Cart';
 
 class App extends React.Component {
 	state = {
@@ -30,16 +31,23 @@ class App extends React.Component {
 		this.setState({ products: productsDatabase });
 	};
 
+	addToCart = (key) => {
+		const order = { ...this.state.order };
+		order[key] = order[key] + 1 || 1;
+		this.setState({ order: order });
+	};
+
 	render() {
 		return (
 			<div className="organic-food-market">
 				<div className="menu">
 					<ul className="products">
 						{Object.keys(this.state.products).map((key) => (
-							<Product key={key} info={this.state.products[key]} />
+							<Product key={key} index={key} info={this.state.products[key]} addToCart={this.addToCart} />
 						))}
 					</ul>
 				</div>
+				<Cart products={this.state.products} order={this.state.order} />
 			</div>
 		);
 	}
