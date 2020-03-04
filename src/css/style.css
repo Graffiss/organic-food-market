@@ -19,6 +19,27 @@ a {
   text-decoration: none;
 }
 
+/* Scrollbar mod */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffed9e;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffbd08;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #9b7200;
+}
+
 .main-background {
   min-height: 100vh;
   display: -webkit-box;
@@ -45,10 +66,11 @@ a {
 .main-site {
   min-width: 60vw;
   min-height: 80vh;
+  max-height: 80vh;
   -webkit-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
-  overflow: hidden;
+  overflow: auto;
   background-color: #ffc547;
 }
 
@@ -244,6 +266,11 @@ footer {
   min-height: 70vh;
   min-width: 60vw;
   background: #ffc547;
+}
+
+.organic-food-market {
+  max-height: 70vh;
+  overflow: auto;
 }
 
 li {
