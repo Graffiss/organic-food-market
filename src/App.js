@@ -2,6 +2,7 @@ import React from 'react';
 import Product from './components/Product';
 import productsDatabase from './products-database';
 import Cart from './components/Cart';
+import Inventory from './components/Inventory';
 
 class App extends React.Component {
 	state = {
@@ -48,6 +49,7 @@ class App extends React.Component {
 					</ul>
 				</div>
 				<Cart products={this.state.products} order={this.state.order} />
+				<Inventory />
 			</div>
 		);
 	}

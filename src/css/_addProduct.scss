@@ -1,0 +1,28 @@
+.edit-form {
+	display: flex;
+	justify-content: center;
+
+	input,
+	textarea,
+	select {
+		background-color: white;
+		border: 2px solid $main-green;
+		padding: 10px 5px;
+		flex-direction: column;
+		font-size: 1.4rem;
+	}
+
+	button {
+		border: 2px solid white;
+		color: white;
+		background-color: $main-green;
+		padding: 10px 5px;
+		font-size: 1.4rem;
+	}
+
+	button:hover {
+		border: 2px solid black;
+		color: black;
+		background-color: white;
+	}
+}
