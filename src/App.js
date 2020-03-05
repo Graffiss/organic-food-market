@@ -38,6 +38,14 @@ class App extends React.Component {
 		this.setState({ order: order });
 	};
 
+	addProductToList = (product) => {
+		const products = { ...this.state.products };
+		products[`product${Date.now()}`] = product;
+		this.setState({
+			products: products
+		});
+	};
+
 	render() {
 		return (
 			<div className="organic-food-market">
@@ -49,7 +57,7 @@ class App extends React.Component {
 					</ul>
 				</div>
 				<Cart products={this.state.products} order={this.state.order} />
-				<Inventory />
+				<Inventory addProductToList={this.addProductToList} />
 			</div>
 		);
 	}

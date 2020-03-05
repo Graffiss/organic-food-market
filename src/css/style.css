@@ -331,5 +331,6 @@ li {
   border: 2px solid black;
   color: black;
   background-color: white;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
