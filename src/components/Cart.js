@@ -1,6 +1,7 @@
 import React from 'react';
 
 class Cart extends React.Component {
+	sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
 	summaryFunc = (key) => {
 		const product = this.props.products[key];
 		const count = this.props.order[key];
@@ -32,6 +33,7 @@ class Cart extends React.Component {
 				<h2>Shopping cart</h2>
 				<ul>{orderID.map(this.summaryFunc)}</ul>
 				<div className="summary">{summary}</div>
+				<div>Number of items in the cart: {this.sumValues(this.props.order)}</div>
 			</div>
 		);
 	}

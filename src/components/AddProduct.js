@@ -17,6 +17,7 @@ class AddProduct extends React.Component {
 			image: this.imageRef.current.value
 		};
 		this.props.addProductToList(product);
+		e.currentTarget.reset();
 	};
 	render() {
 		return (
