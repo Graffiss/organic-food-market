@@ -333,4 +333,13 @@ li {
   background-color: white;
   cursor: pointer;
 }
+
+.cart-hidden {
+  visibility: hidden;
+}
+
+.cart-visible {
+  visibility: visible;
+  border: 5px solid red;
+}
 /*# sourceMappingURL=style.css.map */

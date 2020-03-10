@@ -25,7 +25,8 @@ class App extends React.Component {
 				status: 'available'
 			}
 		},
-		order: {}
+		order: {},
+		cartHidden: true
 	};
 
 	saveProductsList = () => {
@@ -46,6 +47,12 @@ class App extends React.Component {
 		});
 	};
 
+	updateProduct = (key, updateProduct) => {
+		const products = { ...this.state.products };
+		products[key] = updateProduct;
+		this.setState({ products: products });
+	};
+
 	render() {
 		return (
 			<div className="organic-food-market">
@@ -56,8 +63,12 @@ class App extends React.Component {
 						))}
 					</ul>
 				</div>
-				<Cart products={this.state.products} order={this.state.order} />
-				<Inventory addProductToList={this.addProductToList} />
+				<Cart products={this.state.products} order={this.state.order} cartHidden={this.state.cartHidden} />
+				<Inventory
+					addProductToList={this.addProductToList}
+					products={this.state.products}
+					updateProduct={this.updateProduct}
+				/>
 			</div>
 		);
 	}

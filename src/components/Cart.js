@@ -29,7 +29,7 @@ class Cart extends React.Component {
 			return prevSummary;
 		}, 0);
 		return (
-			<div>
+			<div className={this.props.cartHidden ? 'cart-hidden' : 'cart-visible'}>
 				<h2>Shopping cart</h2>
 				<ul>{orderID.map(this.summaryFunc)}</ul>
 				<div className="summary">{summary}</div>
