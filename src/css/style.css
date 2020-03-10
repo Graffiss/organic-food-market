@@ -335,11 +335,23 @@ li {
 }
 
 .cart-hidden {
-  visibility: hidden;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  display: none;
 }
 
 .cart-visible {
-  visibility: visible;
-  border: 5px solid red;
+  background: #ffc547;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 70%;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  -webkit-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
 }
 /*# sourceMappingURL=style.css.map */

@@ -53,6 +53,14 @@ class App extends React.Component {
 		this.setState({ products: products });
 	};
 
+	cartOpen = () => {
+		this.setState({
+			cartHidden: !this.state.cartHidden
+		});
+	};
+
+	sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
+
 	render() {
 		return (
 			<div className="organic-food-market">
@@ -69,6 +77,9 @@ class App extends React.Component {
 					products={this.state.products}
 					updateProduct={this.updateProduct}
 				/>
+				<button onClick={this.cartOpen}>
+					Przycisk CART w NavBar<span>{this.sumValues(this.state.order)}</span>
+				</button>
 			</div>
 		);
 	}
