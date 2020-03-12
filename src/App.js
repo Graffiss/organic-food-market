@@ -78,7 +78,7 @@ class App extends React.Component {
 					updateProduct={this.updateProduct}
 				/>
 				<button onClick={this.cartOpen}>
-					Przycisk CART w NavBar<span>{this.sumValues(this.state.order)}</span>
+					CART <span>{this.sumValues(this.state.order)}</span>
 				</button>
 			</div>
 		);
