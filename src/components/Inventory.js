@@ -13,6 +13,7 @@ class Inventory extends React.Component {
 						index={key}
 						products={this.props.products[key]}
 						updateProduct={this.props.updateProduct}
+						removeProductFromInventory={this.props.removeProductFromInventory}
 					/>
 				))}
 				<AddProduct addProductToList={this.props.addProductToList} />

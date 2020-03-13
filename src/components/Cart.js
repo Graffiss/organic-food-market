@@ -13,6 +13,7 @@ class Cart extends React.Component {
 			<li key={key}>
 				{count} kg {product.name}
 				{count * product.price}
+				<button onClick={() => this.props.removeProductFromOrder(key)}>Remove</button>
 			</li>
 		);
 	};

@@ -53,6 +53,18 @@ class App extends React.Component {
 		this.setState({ products: products });
 	};
 
+	removeProductFromInventory = (key) => {
+		const products = { ...this.state.products };
+		delete products[key];
+		this.setState({ products: products });
+	};
+
+	removeProductFromOrder = (key) => {
+		const order = { ...this.state.order };
+		delete order[key];
+		this.setState({ order: order });
+	};
+
 	cartOpen = () => {
 		this.setState({
 			cartHidden: !this.state.cartHidden
@@ -71,11 +83,17 @@ class App extends React.Component {
 						))}
 					</ul>
 				</div>
-				<Cart products={this.state.products} order={this.state.order} cartHidden={this.state.cartHidden} />
+				<Cart
+					products={this.state.products}
+					order={this.state.order}
+					cartHidden={this.state.cartHidden}
+					removeProductFromOrder={this.removeProductFromOrder}
+				/>
 				<Inventory
 					addProductToList={this.addProductToList}
 					products={this.state.products}
 					updateProduct={this.updateProduct}
+					removeProductFromInventory={this.removeProductFromInventory}
 				/>
 				<button onClick={this.cartOpen}>
 					CART <span>{this.sumValues(this.state.order)}</span>
