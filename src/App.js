@@ -29,6 +29,17 @@ class App extends React.Component {
 		cartHidden: true
 	};
 
+	componentDidMount() {
+		const localStorageRef = localStorage.getItem('Order');
+		if (localStorageRef) {
+			this.setState({ order: JSON.parse(localStorageRef) });
+		}
+	}
+
+	componentDidUpdate() {
+		localStorage.setItem('Order', JSON.stringify(this.state.order));
+	}
+
 	saveProductsList = () => {
 		this.setState({ products: productsDatabase });
 	};
