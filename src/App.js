@@ -82,11 +82,37 @@ class App extends React.Component {
 		});
 	};
 
+	handleClickOutsideCart = () => {
+		if (this.state.cartHidden) {
+			// attach/remove event handler
+			document.addEventListener('click', this.handleOutsideClick, false);
+		} else {
+			document.removeEventListener('click', this.handleOutsideClick, false);
+		}
+		this.setState({
+			cartHidden: !this.state.cartHidden
+		});
+	};
+
+	handleOutsideClick = (e) => {
+		// ignore clicks on the component itself
+		if (this.node && !this.node.contains(e.target)) {
+			return;
+		}
+
+		this.handleClickOutsideCart();
+	};
+
 	sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
 
 	render() {
 		return (
-			<div className="organic-food-market">
+			<div
+				className="organic-food-market"
+				ref={(node) => {
+					this.node = node;
+				}}
+			>
 				<div className="menu">
 					<ul className="products">
 						{Object.keys(this.state.products).map((key) => (
@@ -106,7 +132,7 @@ class App extends React.Component {
 					updateProduct={this.updateProduct}
 					removeProductFromInventory={this.removeProductFromInventory}
 				/>
-				<button onClick={this.cartOpen}>
+				<button onClick={this.handleClickOutsideCart}>
 					CART <span>{this.sumValues(this.state.order)}</span>
 				</button>
 			</div>
