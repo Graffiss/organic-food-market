@@ -1,6 +1,8 @@
 import React from 'react';
 
 class Cart extends React.Component {
+	cartRef = React.createRef();
+
 	sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
 	summaryFunc = (key) => {
 		const product = this.props.products[key];
@@ -30,7 +32,7 @@ class Cart extends React.Component {
 			return prevSummary;
 		}, 0);
 		return (
-			<div className={this.props.cartHidden ? 'cart-hidden' : 'cart-visible'}>
+			<div className={this.props.cartVisible ? 'cart-visible' : 'cart-hidden'} ref={this.cartRef}>
 				<h2>Shopping cart</h2>
 				<ul>{orderID.map(this.summaryFunc)}</ul>
 				<div className="summary">{summary}</div>

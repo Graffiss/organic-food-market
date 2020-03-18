@@ -26,14 +26,17 @@ class App extends React.Component {
 			}
 		},
 		order: {},
-		cartHidden: true
+		cartVisible: false
 	};
+
+	cartRef = React.createRef();
 
 	componentDidMount() {
 		const localStorageRef = localStorage.getItem('Order');
 		if (localStorageRef) {
 			this.setState({ order: JSON.parse(localStorageRef) });
 		}
+		console.log(this.cartRef.current);
 	}
 
 	componentDidUpdate() {
@@ -78,25 +81,25 @@ class App extends React.Component {
 
 	cartOpen = () => {
 		this.setState({
-			cartHidden: !this.state.cartHidden
+			cartVisible: !this.state.cartVisible
 		});
 	};
 
 	handleClickOutsideCart = () => {
-		if (this.state.cartHidden) {
+		if (!this.state.cartVisible) {
 			// attach/remove event handler
 			document.addEventListener('click', this.handleOutsideClick, false);
 		} else {
 			document.removeEventListener('click', this.handleOutsideClick, false);
 		}
 		this.setState({
-			cartHidden: !this.state.cartHidden
+			cartVisible: !this.state.cartVisible
 		});
 	};
 
 	handleOutsideClick = (e) => {
 		// ignore clicks on the component itself
-		if (this.node && !this.node.contains(e.target)) {
+		if (this.node.contains(e.target)) {
 			return;
 		}
 
@@ -107,12 +110,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div
-				className="organic-food-market"
-				ref={(node) => {
-					this.node = node;
-				}}
-			>
+			<div className="organic-food-market">
 				<div className="menu">
 					<ul className="products">
 						{Object.keys(this.state.products).map((key) => (
@@ -120,12 +118,14 @@ class App extends React.Component {
 						))}
 					</ul>
 				</div>
-				<Cart
-					products={this.state.products}
-					order={this.state.order}
-					cartHidden={this.state.cartHidden}
-					removeProductFromOrder={this.removeProductFromOrder}
-				/>
+				<div ref={(node) => (this.node = node)}>
+					<Cart
+						products={this.state.products}
+						order={this.state.order}
+						cartVisible={this.state.cartVisible}
+						removeProductFromOrder={this.removeProductFromOrder}
+					/>
+				</div>
 				<Inventory
 					addProductToList={this.addProductToList}
 					products={this.state.products}
