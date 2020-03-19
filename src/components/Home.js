@@ -15,9 +15,7 @@ class Home extends React.Component {
 				</div>
 				<div className="green-text text content">
 					<p>Go to store</p>
-					<button>
-						<a href="store.html">BUY</a>
-					</button>
+					<button onClick={() => this.props.history.push('/store')}>BUY</button>
 				</div>
 				<div className="yellow-text text content" />
 				<div className="red-text text content" />

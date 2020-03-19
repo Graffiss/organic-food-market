@@ -124,6 +124,10 @@ nav a {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 20rem;
           flex: 1 1 20rem;
+  color: black;
+  font-size: 1.6rem;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .contents {
@@ -353,5 +357,18 @@ li {
   transition: transform 1s ease, -webkit-transform 1s ease;
   -webkit-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.total-in-cart {
+  background: red;
+  border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  color: #ffffff;
+  display: inline-block;
+  line-height: 1.2em;
+  margin-right: 5px;
+  text-align: center;
+  width: 1.2em;
 }
 /*# sourceMappingURL=style.css.map */

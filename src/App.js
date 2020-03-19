@@ -3,6 +3,7 @@ import Product from './components/Product';
 import productsDatabase from './products-database';
 import Cart from './components/Cart';
 import Inventory from './components/Inventory';
+import Nav from './components/Nav';
 
 class App extends React.Component {
 	state = {
@@ -110,32 +111,46 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div className="organic-food-market">
-				<div className="menu">
-					<ul className="products">
-						{Object.keys(this.state.products).map((key) => (
-							<Product key={key} index={key} info={this.state.products[key]} addToCart={this.addToCart} />
-						))}
-					</ul>
-				</div>
-				<div ref={(node) => (this.node = node)}>
-					<Cart
-						products={this.state.products}
-						order={this.state.order}
-						cartVisible={this.state.cartVisible}
-						removeProductFromOrder={this.removeProductFromOrder}
-					/>
-				</div>
-				<Inventory
-					addProductToList={this.addProductToList}
-					products={this.state.products}
-					updateProduct={this.updateProduct}
-					removeProductFromInventory={this.removeProductFromInventory}
-				/>
-				<button onClick={this.handleClickOutsideCart}>
-					CART <span>{this.sumValues(this.state.order)}</span>
-				</button>
-			</div>
+			<React.Fragment>
+				<section className="main-background">
+					<div id="background">
+						<section className="main-site">
+							<Nav
+								cartOnClick={this.handleClickOutsideCart}
+								itemsInCart={this.sumValues(this.state.order)}
+							/>
+							<div className="organic-food-market">
+								<div className="menu">
+									<ul className="products">
+										{Object.keys(this.state.products).map((key) => (
+											<Product
+												key={key}
+												index={key}
+												info={this.state.products[key]}
+												addToCart={this.addToCart}
+											/>
+										))}
+									</ul>
+								</div>
+								<div ref={(node) => (this.node = node)}>
+									<Cart
+										products={this.state.products}
+										order={this.state.order}
+										cartVisible={this.state.cartVisible}
+										removeProductFromOrder={this.removeProductFromOrder}
+									/>
+								</div>
+								<Inventory
+									addProductToList={this.addProductToList}
+									products={this.state.products}
+									updateProduct={this.updateProduct}
+									removeProductFromInventory={this.removeProductFromInventory}
+								/>
+							</div>
+						</section>
+					</div>
+				</section>
+			</React.Fragment>
 		);
 	}
 }
