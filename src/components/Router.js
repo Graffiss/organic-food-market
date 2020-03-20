@@ -1,19 +1,19 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import App from '../App';
+import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import NotFound from './NotFound';
 import Inventory from './Inventory';
+import Store from './Store';
 
 const Router = () => (
-	<BrowserRouter>
+	<main>
 		<Switch>
 			<Route exact path="/" component={Home} />
-			<Route path="/store" component={App} />
+			<Route path="/store" component={Store} />
 			<Route path="/admin" component={Inventory} />
 			<Route component={NotFound} />
 		</Switch>
-	</BrowserRouter>
+	</main>
 );
 
 export default Router;
