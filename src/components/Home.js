@@ -9,6 +9,9 @@ class Home extends React.Component {
 				</div>
 				<div className="yellow-pics pics content">
 					<img src={require('../images/bananas.jpeg')} alt="Bananas" />
+					<button className="blog" onClick={() => this.props.history.push('/blog')}>
+						Go to BLOG
+					</button>
 				</div>
 				<div className="red-pics pics content">
 					<img src={require('../images/carrots.jpg')} alt="Carrots" />
