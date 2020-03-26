@@ -12,6 +12,7 @@
 	left: 70%;
 	transition: transform 1s ease;
 	box-shadow: 0px 10px 10px rgba($color: #000000, $alpha: 0.2), 0px 20px 40px rgba($color: #000000, $alpha: 0.2);
+	z-index: 99;
 }
 
 .total-in-cart {
