@@ -4,6 +4,7 @@ import productsDatabase from '../products-database';
 import Inventory from './Inventory';
 import Nav from './Nav';
 import Home from './Home';
+import Cart from './Cart';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './NotFound';
 
@@ -117,12 +118,12 @@ class FakeApp extends React.Component {
 				<section className="main-background">
 					<div id="background">
 						<section className="main-site">
-							<Nav
-								cartOnClick={this.handleClickOutsideCart}
-								itemsInCart={this.sumValues(this.state.order)}
-							/>
-							<div className="organic-food-market">
-								<Router>
+							<Router>
+								<Nav
+									cartOnClick={this.handleClickOutsideCart}
+									itemsInCart={this.sumValues(this.state.order)}
+								/>
+								<div className="organic-food-market">
 									<Switch>
 										<Route exact path="/" component={Home} />
 										<Route
@@ -149,8 +150,8 @@ class FakeApp extends React.Component {
 										/>
 										<Route component={NotFound} />
 									</Switch>
-								</Router>
-							</div>
+								</div>
+							</Router>
 						</section>
 					</div>
 				</section>
