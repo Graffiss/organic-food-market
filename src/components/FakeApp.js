@@ -7,6 +7,7 @@ import Home from './Home';
 import Cart from './Cart';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './NotFound';
+import Contact from './Contact';
 
 class FakeApp extends React.Component {
 	state = {
@@ -22,7 +23,6 @@ class FakeApp extends React.Component {
 		if (localStorageRef) {
 			this.setState({ order: JSON.parse(localStorageRef) });
 		}
-		console.log(this.cartRef.current);
 	}
 
 	componentDidUpdate() {
@@ -138,6 +138,7 @@ class FakeApp extends React.Component {
 												/>
 											)}
 										/>
+										<Route path="/contact" render={(props) => <Contact {...props} />} />
 										<Route component={NotFound} />
 									</Switch>
 								</div>

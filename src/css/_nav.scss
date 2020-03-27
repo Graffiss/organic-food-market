@@ -38,3 +38,7 @@ nav {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.current {
+	border-bottom: 0.5rem solid $main-yellow;
+}

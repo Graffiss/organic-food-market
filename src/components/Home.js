@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 	render() {
@@ -9,16 +10,18 @@ class Home extends React.Component {
 				</div>
 				<div className="yellow-pics pics content">
 					<img src={require('../images/bananas.jpeg')} alt="Bananas" />
-					<button className="blog" onClick={() => this.props.history.push('/blog')}>
-						Go to BLOG
-					</button>
+					<Link to="/blog">
+						<button className="blog">Go to BLOG</button>
+					</Link>
 				</div>
 				<div className="red-pics pics content">
 					<img src={require('../images/carrots.jpg')} alt="Carrots" />
 				</div>
 				<div className="green-text text content">
 					<p>Go to store</p>
-					<button onClick={() => this.props.history.push('/store')}>BUY</button>
+					<Link to="/store">
+						<button>BUY</button>
+					</Link>
 				</div>
 				<div className="yellow-text text content">
 					<p>

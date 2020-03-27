@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => (
-	<div>
+	<div className="not-found">
 		<h2>404 - Not found</h2>
-		<button>
-			<Link to="/store">Store</Link>
-		</button>
+		<Link to="/store">
+			<button>Store</button>
+		</Link>
 	</div>
 );
 

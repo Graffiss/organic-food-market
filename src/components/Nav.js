@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Nav extends React.Component {
 	checkIfZero = () => {
@@ -23,25 +23,35 @@ class Nav extends React.Component {
 					</li>
 
 					<h1 id="logo">
-						<Link to="/" id="logo">
+						<NavLink to="/" id="logo">
 							Organic Food
-						</Link>
+						</NavLink>
 					</h1>
 					<ul className="nav-links">
 						<li>
-							<Link to="/">Home</Link>
+							<NavLink exact to="/" activeClassName="current">
+								Home
+							</NavLink>
 						</li>
 						<li>
-							<Link to="/about">About</Link>
+							<NavLink to="/about" activeClassName="current">
+								About
+							</NavLink>
 						</li>
 						<li>
-							<Link to="/store">Store</Link>
+							<NavLink to="/store" activeClassName="current">
+								Store
+							</NavLink>
 						</li>
 						<li>
-							<Link to="/admin">Login</Link>
+							<NavLink to="/admin" activeClassName="current">
+								Login
+							</NavLink>
 						</li>
 						<li>
-							<Link to="/about">Contact</Link>
+							<NavLink to="/contact" activeClassName="current">
+								Contact
+							</NavLink>
 						</li>
 						{this.checkIfZero()}
 					</ul>
