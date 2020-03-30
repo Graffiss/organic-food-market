@@ -1,31 +1,18 @@
 import React from 'react';
-import Product from './components/Product';
-import productsDatabase from './products-database';
-import Cart from './components/Cart';
-import Inventory from './components/Inventory';
-import Nav from './components/Nav';
+import Store from './Store';
+import productsDatabase from '../products-database';
+import Inventory from './Inventory';
+import Nav from './Nav';
+import Home from './Home';
+import Cart from './Cart';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotFound from './NotFound';
+import Contact from './Contact';
+import About from './About';
 
 class App extends React.Component {
 	state = {
-		products: {
-			vegetable1: {
-				index: 1,
-				name: 'Carrot',
-				image: '/images/carrots.jpg',
-				desc: 'Everyone’s favorite white fish. We will cut it to the size you need and ship it.',
-				price: 12,
-				status: 'available'
-			},
-
-			vegetable2: {
-				index: 2,
-				name: 'Green apples',
-				image: '/images/green-apples.jpg',
-				desc: 'These tender, mouth-watering beauties are a fantastic hit at any dinner party.',
-				price: 10,
-				status: 'available'
-			}
-		},
+		products: productsDatabase,
 		order: {},
 		cartVisible: false
 	};
@@ -37,7 +24,6 @@ class App extends React.Component {
 		if (localStorageRef) {
 			this.setState({ order: JSON.parse(localStorageRef) });
 		}
-		console.log(this.cartRef.current);
 	}
 
 	componentDidUpdate() {
@@ -115,23 +101,11 @@ class App extends React.Component {
 				<section className="main-background">
 					<div id="background">
 						<section className="main-site">
-							<Nav
-								cartOnClick={this.handleClickOutsideCart}
-								itemsInCart={this.sumValues(this.state.order)}
-							/>
-							<div className="organic-food-market">
-								<div className="menu">
-									<ul className="products">
-										{Object.keys(this.state.products).map((key) => (
-											<Product
-												key={key}
-												index={key}
-												info={this.state.products[key]}
-												addToCart={this.addToCart}
-											/>
-										))}
-									</ul>
-								</div>
+							<Router>
+								<Nav
+									cartOnClick={this.handleClickOutsideCart}
+									itemsInCart={this.sumValues(this.state.order)}
+								/>
 								<div ref={(node) => (this.node = node)}>
 									<Cart
 										products={this.state.products}
@@ -140,13 +114,37 @@ class App extends React.Component {
 										removeProductFromOrder={this.removeProductFromOrder}
 									/>
 								</div>
-								<Inventory
-									addProductToList={this.addProductToList}
-									products={this.state.products}
-									updateProduct={this.updateProduct}
-									removeProductFromInventory={this.removeProductFromInventory}
-								/>
-							</div>
+								<div className="organic-food-market">
+									<Switch>
+										<Route exact path="/" component={Home} />
+										<Route path="/about" component={About} />
+										<Route
+											path="/store"
+											render={(props) => (
+												<Store
+													{...props}
+													products={this.state.products}
+													addToCart={this.addToCart}
+												/>
+											)}
+										/>
+										<Route
+											path="/admin"
+											render={(props) => (
+												<Inventory
+													{...props}
+													addProductToList={this.addProductToList}
+													products={this.state.products}
+													updateProduct={this.updateProduct}
+													removeProductFromInventory={this.removeProductFromInventory}
+												/>
+											)}
+										/>
+										<Route path="/contact" render={(props) => <Contact {...props} />} />
+										<Route component={NotFound} />
+									</Switch>
+								</div>
+							</Router>
 						</section>
 					</div>
 				</section>

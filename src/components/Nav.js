@@ -39,6 +39,11 @@ class Nav extends React.Component {
 							</NavLink>
 						</li>
 						<li>
+							<NavLink to="/blog" activeClassName="current">
+								Blog
+							</NavLink>
+						</li>
+						<li>
 							<NavLink to="/store" activeClassName="current">
 								Store
 							</NavLink>

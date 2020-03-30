@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:900&display=swap);
 $main-green: #cdd661;
 $main-yellow: #ffc547;
 $main-red: #ff7352;
@@ -14,7 +15,7 @@ $main-footer: #3f3d40;
 @import 'global';
 @import 'main';
 @import 'nav';
-@import 'content';
+@import 'home';
 @import 'store';
 @import 'product';
 @import 'addProduct';

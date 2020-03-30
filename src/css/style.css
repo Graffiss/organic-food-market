@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:900&display=swap);
 * {
   margin: 0;
   padding: 0;
@@ -236,6 +237,11 @@ nav a {
   grid-row: 1/6;
   background: #ff7352;
   overflow: hidden;
+}
+
+.big-text {
+  font-size: 4rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 .blue-text {
