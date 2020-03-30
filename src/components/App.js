@@ -1,7 +1,6 @@
 import React from 'react';
 import Store from './Store';
 import productsDatabase from '../products-database';
-import Inventory from './Inventory';
 import Nav from './Nav';
 import Home from './Home';
 import Cart from './Cart';
@@ -9,6 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './NotFound';
 import Contact from './Contact';
 import About from './About';
+import Login from './Login';
 
 class App extends React.Component {
 	state = {
@@ -129,9 +129,9 @@ class App extends React.Component {
 											)}
 										/>
 										<Route
-											path="/admin"
+											path="/login"
 											render={(props) => (
-												<Inventory
+												<Login
 													{...props}
 													addProductToList={this.addProductToList}
 													products={this.state.products}

@@ -1,11 +1,9 @@
 import React from 'react';
 import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
-import Login from './Login';
 
 class Inventory extends React.Component {
 	render() {
-		return <Login />;
 		return (
 			<div>
 				<h1>INVENTORY</h1>

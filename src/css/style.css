@@ -347,7 +347,7 @@ footer {
   max-height: 75vh;
   min-width: 60vw;
   background: #ffc547;
-  overflow: hidden;
+  overflow: auto;
   margin: auto;
 }
 

@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import LoginForm from './LoginForm';
+import Inventory from './Inventory';
+import { auth } from '../firebase';
 
-const Login = () => {
+const Login = (props) => {
+	const { addProductToList, products, updateProduct, removeProductFromInventory } = props;
+	const [ currentUser, setCurrentUser ] = useState(null);
+
+	const handleSignOut = () => auth.signOut();
+
+	useEffect(() => {
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				setCurrentUser(user);
+				localStorage.setItem('currentUser', user.uid);
+			} else {
+				setCurrentUser(null);
+				localStorage.removeItem('currentUser');
+			}
+		});
+	}, []);
+
 	return (
-		<div className="login contact">
-			<h2>Login or register in our store</h2>
-			<input placeholder="client@email.com" id="email-input" type="email" name="email" required />
-			<input placeholder="********" id="password-input" type="password" name="password" required />
-			<div className="login-buttons">
-				<button type="submit" name="login">
-					Login
-				</button>
-				<button type="submit" name="register" className="button-register">
-					Register
-				</button>
-			</div>
+		<div>
+			{currentUser ? (
+				<div>
+					<Inventory
+						{...props}
+						addProductToList={addProductToList}
+						products={products}
+						updateProduct={updateProduct}
+						removeProductFromInventory={removeProductFromInventory}
+					/>
+					<button onClick={handleSignOut}>Wyloguj</button>
+				</div>
+			) : (
+				<LoginForm />
+			)}
 		</div>
 	);
 };

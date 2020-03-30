@@ -49,7 +49,7 @@ class Nav extends React.Component {
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/admin" activeClassName="current">
+							<NavLink to="/login" activeClassName="current">
 								Login
 							</NavLink>
 						</li>
