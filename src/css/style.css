@@ -567,4 +567,48 @@ li {
   background: white;
   color: #ffc547;
 }
+
+.login .button-register {
+  background: #ff7352;
+  border: 0.2rem solid #ff7352;
+}
+
+.login .button-register:hover {
+  background: transparent;
+  border: 0.2rem soid #ff7352;
+  color: black;
+}
+
+.about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0rem 10rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 70vh;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.about h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.about h3 {
+  font-size: 2.6rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.about p {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
 /*# sourceMappingURL=style.css.map */

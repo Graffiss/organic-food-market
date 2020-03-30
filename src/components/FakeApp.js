@@ -8,6 +8,7 @@ import Cart from './Cart';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './NotFound';
 import Contact from './Contact';
+import About from './About';
 
 class FakeApp extends React.Component {
 	state = {
@@ -116,6 +117,7 @@ class FakeApp extends React.Component {
 								<div className="organic-food-market">
 									<Switch>
 										<Route exact path="/" component={Home} />
+										<Route path="/about" component={About} />
 										<Route
 											path="/store"
 											render={(props) => (
