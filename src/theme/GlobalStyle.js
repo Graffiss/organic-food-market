@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
         font-size: 1.6rem;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Fira Sans', sans-serif;
         color: white;
         
     }
@@ -25,24 +25,25 @@ const GlobalStyle = createGlobalStyle`
 }
 
 /* Scrollbar mod */
+
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+	width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #ffed9e;
+	background: rgb(255, 237, 158);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ffbd08;
+	background: rgb(255, 189, 8);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #9b7200;
+	background: rgb(155, 114, 0);
 }
 `;
 

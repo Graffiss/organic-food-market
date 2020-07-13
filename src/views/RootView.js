@@ -3,12 +3,13 @@ import Store from "../components/Store";
 import productsDatabase from "../products-database";
 import Nav from "../components/Nav";
 import Home from "./HomeView";
-import Cart from "../components/Cart";
+import Cart from "../components/organisms/Cart";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFoundView";
 import Contact from "./ContactView";
 import About from "./AboutView";
 import Login from "./LoginView";
+import MainTemplate from "../template/MainTemplate";
 
 class App extends React.Component {
   state = {
@@ -97,63 +98,55 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <section className="main-background">
-          <div id="background">
-            <section className="main-site">
-              <Router>
-                <Nav
-                  cartOnClick={this.handleClickOutsideCart}
-                  itemsInCart={this.sumValues(this.state.order)}
-                />
-                <div ref={(node) => (this.node = node)}>
-                  <Cart
-                    products={this.state.products}
-                    order={this.state.order}
-                    cartVisible={this.state.cartVisible}
-                    removeProductFromOrder={this.removeProductFromOrder}
-                  />
-                </div>
-                <div className="organic-food-market">
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
-                    <Route
-                      path="/store"
-                      render={(props) => (
-                        <Store
-                          {...props}
-                          products={this.state.products}
-                          addToCart={this.addToCart}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/login"
-                      render={(props) => (
-                        <Login
-                          {...props}
-                          addProductToList={this.addProductToList}
-                          products={this.state.products}
-                          updateProduct={this.updateProduct}
-                          removeProductFromInventory={
-                            this.removeProductFromInventory
-                          }
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/contact"
-                      render={(props) => <Contact {...props} />}
-                    />
-                    <Route component={NotFound} />
-                  </Switch>
-                </div>
-              </Router>
-            </section>
+      <MainTemplate>
+        <Router>
+          <Nav
+            cartOnClick={this.handleClickOutsideCart}
+            itemsInCart={this.sumValues(this.state.order)}
+          />
+          <div ref={(node) => (this.node = node)}>
+            <Cart
+              products={this.state.products}
+              order={this.state.order}
+              cartVisible={this.state.cartVisible}
+              removeProductFromOrder={this.removeProductFromOrder}
+            />
           </div>
-        </section>
-      </React.Fragment>
+          <div className="organic-food-market">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route
+                path="/store"
+                render={(props) => (
+                  <Store
+                    {...props}
+                    products={this.state.products}
+                    addToCart={this.addToCart}
+                  />
+                )}
+              />
+              <Route
+                path="/login"
+                render={(props) => (
+                  <Login
+                    {...props}
+                    addProductToList={this.addProductToList}
+                    products={this.state.products}
+                    updateProduct={this.updateProduct}
+                    removeProductFromInventory={this.removeProductFromInventory}
+                  />
+                )}
+              />
+              <Route
+                path="/contact"
+                render={(props) => <Contact {...props} />}
+              />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </Router>
+      </MainTemplate>
     );
   }
 }

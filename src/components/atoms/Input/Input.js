@@ -10,8 +10,9 @@ export const Input = styled.input`
   margin-bottom: 1rem;
 
   ::placeholder {
-	color: white;
-	padding-left: 1rem;
+    color: white;
+    padding-left: 1rem;
+  }
 
   ${({ textarea }) =>
     textarea &&
