@@ -1,18 +1,19 @@
 import React from "react";
 import Store from "../components/Store";
 import productsDatabase from "../products-database";
-import Nav from "../components/Nav";
+import Nav from "../components/organisms/Nav/Nav";
 import Home from "./HomeView";
-import Cart from "../components/organisms/Cart";
+import Cart from "../components/organisms/Cart/Cart";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFoundView";
 import Contact from "./ContactView";
 import About from "./AboutView";
 import Login from "./LoginView";
 import MainTemplate from "../template/MainTemplate";
+import GlobalState from "../context/GlobalState";
 
-class App extends React.Component {
-  state = {
+const Root = () => (
+  /* state = {
     products: productsDatabase,
     order: {},
     cartVisible: false,
@@ -94,61 +95,48 @@ class App extends React.Component {
     this.handleClickOutsideCart();
   };
 
-  sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
+  sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0); */
 
-  render() {
-    return (
-      <MainTemplate>
-        <Router>
-          <Nav
-            cartOnClick={this.handleClickOutsideCart}
-            itemsInCart={this.sumValues(this.state.order)}
-          />
-          <div ref={(node) => (this.node = node)}>
-            <Cart
-              products={this.state.products}
-              order={this.state.order}
-              cartVisible={this.state.cartVisible}
-              removeProductFromOrder={this.removeProductFromOrder}
+  <GlobalState>
+    <MainTemplate>
+      <Router>
+        <Nav />
+        <div ref={(node) => (this.node = node)}>
+          <Cart />
+        </div>
+        <div className="organic-food-market">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route
+              path="/store"
+              render={(props) => (
+                <Store
+                  {...props}
+                  products={this.state.products}
+                  addToCart={this.addToCart}
+                />
+              )}
             />
-          </div>
-          <div className="organic-food-market">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route
-                path="/store"
-                render={(props) => (
-                  <Store
-                    {...props}
-                    products={this.state.products}
-                    addToCart={this.addToCart}
-                  />
-                )}
-              />
-              <Route
-                path="/login"
-                render={(props) => (
-                  <Login
-                    {...props}
-                    addProductToList={this.addProductToList}
-                    products={this.state.products}
-                    updateProduct={this.updateProduct}
-                    removeProductFromInventory={this.removeProductFromInventory}
-                  />
-                )}
-              />
-              <Route
-                path="/contact"
-                render={(props) => <Contact {...props} />}
-              />
-              <Route component={NotFound} />
-            </Switch>
-          </div>
-        </Router>
-      </MainTemplate>
-    );
-  }
-}
+            <Route
+              path="/login"
+              render={(props) => (
+                <Login
+                  {...props}
+                  addProductToList={this.addProductToList}
+                  products={this.state.products}
+                  updateProduct={this.updateProduct}
+                  removeProductFromInventory={this.removeProductFromInventory}
+                />
+              )}
+            />
+            <Route path="/contact" render={(props) => <Contact {...props} />} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
+    </MainTemplate>
+  </GlobalState>
+);
 
-export default App;
+export default Root;

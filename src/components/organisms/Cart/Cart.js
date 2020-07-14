@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../../../context/AppContext";
 
-const Cart = ({ order, cartVisible }) => {
+const Cart = () => {
+  const context = useContext(AppContext);
+  const {
+    order,
+    products,
+    cartVisible,
+    removeProductFromOrder,
+    sumValues,
+  } = context;
+
   const cartRef = React.createRef();
 
-  const sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
   const summaryFunc = (key) => {
-    const product = this.props.products[key];
-    const count = this.props.order[key];
+    const product = products[key];
+    const count = order[key];
     const isAvaiable = product.status === "available";
     if (!isAvaiable) {
       return (
@@ -19,16 +28,14 @@ const Cart = ({ order, cartVisible }) => {
       <li key={key}>
         {count} kg {product.name}
         {count * product.price}
-        <button onClick={() => this.props.removeProductFromOrder(key)}>
-          Remove
-        </button>
+        <button onClick={() => removeProductFromOrder(key)}>Remove</button>
       </li>
     );
   };
   const orderID = Object.keys(order);
   const summary = orderID.reduce((prevSummary, key) => {
-    const product = this.props.products[key];
-    const count = this.props.order[key];
+    const product = products[key];
+    const count = order[key];
     const isAvaiable = product && product.status === "available";
     if (isAvaiable) {
       return prevSummary + count * product.price;
