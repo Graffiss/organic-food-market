@@ -6,21 +6,21 @@ $main-blue: #01abce;
 $main-footer: #3f3d40;
 
 @mixin flex($justify, $align, $direction) {
-	display: flex;
-	justify-content: $justify;
-	align-items: $align;
-	flex-direction: $direction;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
 }
 
-@import 'global';
-@import 'main';
-@import 'nav';
-@import 'home';
-@import 'store';
-@import 'product';
-@import 'addProduct';
-@import 'cart';
-@import 'contact';
-@import 'notfound';
-@import 'login';
-@import 'about';
+@import "global";
+@import "main";
+@import "nav";
+@import "home";
+@import "store";
+@import "product";
+@import "addProduct";
+@import "cart";
+@import "contact";
+@import "notfound";
+@import "login";
+@import "about";

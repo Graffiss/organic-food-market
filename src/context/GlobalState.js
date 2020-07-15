@@ -61,9 +61,9 @@ const GlobalState = ({ children }) => {
   const handleClickOutsideCart = () => {
     if (!cartVisible) {
       // attach/remove event handler
-      document.addEventListener("click", this.handleOutsideClick, false);
+      document.addEventListener("click", handleOutsideClick, false);
     } else {
-      document.removeEventListener("click", this.handleOutsideClick, false);
+      document.removeEventListener("click", handleOutsideClick, false);
     }
     setCartVisible(!cartVisible);
   };

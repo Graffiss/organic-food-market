@@ -1,6 +1,5 @@
 import React from "react";
-import Store from "../components/Store";
-import productsDatabase from "../products-database";
+import Store from "./StoreView";
 import Nav from "../components/organisms/Nav/Nav";
 import Home from "./HomeView";
 import Cart from "../components/organisms/Cart/Cart";
@@ -10,6 +9,7 @@ import Contact from "./ContactView";
 import About from "./AboutView";
 import Login from "./LoginView";
 import MainTemplate from "../template/MainTemplate";
+import ContentTemplate from "../template/ContentTemplate";
 import GlobalState from "../context/GlobalState";
 
 const Root = () => (
@@ -101,23 +101,14 @@ const Root = () => (
     <MainTemplate>
       <Router>
         <Nav />
-        <div ref={(node) => (this.node = node)}>
+        <div ref={(node) => node}>
           <Cart />
         </div>
-        <div className="organic-food-market">
+        <ContentTemplate>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route
-              path="/store"
-              render={(props) => (
-                <Store
-                  {...props}
-                  products={this.state.products}
-                  addToCart={this.addToCart}
-                />
-              )}
-            />
+            <Route path="/store" component={Store} />
             <Route
               path="/login"
               render={(props) => (
@@ -133,7 +124,7 @@ const Root = () => (
             <Route path="/contact" render={(props) => <Contact {...props} />} />
             <Route component={NotFound} />
           </Switch>
-        </div>
+        </ContentTemplate>
       </Router>
     </MainTemplate>
   </GlobalState>
