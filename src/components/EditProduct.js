@@ -1,28 +1,54 @@
-import React from 'react';
+import React, { useContext } from "react";
+import AppContext from "../context/AppContext";
+import styled from "styled-components";
 
-class EditProduct extends React.Component {
-	handleChange = (e) => {
-		const updateProduct = {
-			...this.props.products,
-			[e.currentTarget.name]: e.currentTarget.value
-		};
-		this.props.updateProduct(this.props.index, updateProduct);
-	};
-	render() {
-		return (
-			<div className="edit-form">
-				<input name="name" type="text" value={this.props.products.name} onChange={this.handleChange} />
-				<input name="price" type="text" value={this.props.products.price} onChange={this.handleChange} />
-				<select name="status" value={this.props.products.status} onChange={this.handleChange}>
-					<option value="available">Fresh!</option>
-					<option value="unavailable">Sold Out</option>
-				</select>
-				<textarea name="desc" value={this.props.products.desc} onChange={this.handleChange} />
-				<input name="image" type="text" value={this.props.products.image} onChange={this.handleChange} />
-				<button onClick={() => this.props.removeProductFromInventory(this.props.index)}>Delete product</button>
-			</div>
-		);
-	}
-}
+const FormWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const EditProduct = ({ index }) => {
+  const context = useContext(AppContext);
+  const { products, removeProductFromInventory } = context;
+
+  const handleChange = (e) => {
+    const updateProduct = {
+      ...products,
+      [e.currentTarget.name]: e.currentTarget.value,
+    };
+    updateProduct(index, updateProduct);
+  };
+
+  return (
+    <FormWrapper>
+      <input
+        name="name"
+        type="text"
+        value={products.name}
+        onChange={handleChange}
+      />
+      <input
+        name="price"
+        type="text"
+        value={products.price}
+        onChange={handleChange}
+      />
+      <select name="status" value={products.status} onChange={handleChange}>
+        <option value="available">Fresh!</option>
+        <option value="unavailable">Sold Out</option>
+      </select>
+      <textarea name="desc" value={products.desc} onChange={handleChange} />
+      <input
+        name="image"
+        type="text"
+        value={products.image}
+        onChange={handleChange}
+      />
+      <button onClick={() => removeProductFromInventory(index)}>
+        Delete product
+      </button>
+    </FormWrapper>
+  );
+};
 
 export default EditProduct;

@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
   text-decoration: none;
 }
 
+li {
+list-style-type: none
+}
+
 /* Scrollbar mod */
 
 /* width */

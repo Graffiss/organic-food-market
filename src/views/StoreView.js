@@ -9,7 +9,7 @@ const StoreView = () => {
     <div>
       <ul>
         {Object.keys(products).map((key) => (
-          <Product key={key} index={key} info={this.props.products[key]} />
+          <Product key={key} index={key} />
         ))}
       </ul>
     </div>

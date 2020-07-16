@@ -109,18 +109,7 @@ const Root = () => (
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/store" component={Store} />
-            <Route
-              path="/login"
-              render={(props) => (
-                <Login
-                  {...props}
-                  addProductToList={this.addProductToList}
-                  products={this.state.products}
-                  updateProduct={this.updateProduct}
-                  removeProductFromInventory={this.removeProductFromInventory}
-                />
-              )}
-            />
+            <Route path="/login" component={Login} />
             <Route path="/contact" render={(props) => <Contact {...props} />} />
             <Route component={NotFound} />
           </Switch>

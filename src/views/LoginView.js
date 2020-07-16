@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
-import LoginForm from "../components/LoginForm";
-import Inventory from "../components/Inventory";
+import LoginForm from "../components/organisms/LoginForm/LoginForm";
+import Inventory from "./InventoryView";
 import { auth } from "../firebase";
 
-const Login = (props) => {
-  const {
-    addProductToList,
-    products,
-    updateProduct,
-    removeProductFromInventory,
-  } = props;
+const Login = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleSignOut = () => auth.signOut();
@@ -30,13 +24,7 @@ const Login = (props) => {
     <div>
       {currentUser ? (
         <div>
-          <Inventory
-            {...props}
-            addProductToList={addProductToList}
-            products={products}
-            updateProduct={updateProduct}
-            removeProductFromInventory={removeProductFromInventory}
-          />
+          <Inventory />
           <button onClick={handleSignOut}>Wyloguj</button>
         </div>
       ) : (

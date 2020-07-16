@@ -1,6 +1,44 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import AppContext from "../../../context/AppContext";
+import styled from "styled-components";
+
+const Header = styled.header`
+  max-height: 10vh;
+`;
+
+const NavWrapper = styled.nav`
+  background: white;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0rem;
+  color: black;
+  font-size: 1.6rem;
+
+  .active {
+    border-bottom: 0.5rem solid #ffc547;
+  }
+`;
+
+const Logo = styled.h1`
+  display: flex;
+  flex: 1 1 20rem;
+  font-size: 2rem;
+  color: #cdd661;
+  justify-content: flex-end;
+  padding-right: 2%;
+`;
+
+const NavLinks = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  flex: 1 1 20rem;
+  color: black;
+  font-size: 1.6rem;
+  text-decoration: none;
+  cursor: pointer;
+`;
 
 const Nav = () => {
   const context = useContext(AppContext);
@@ -21,52 +59,52 @@ const Nav = () => {
   };
 
   return (
-    <header className="main-head">
-      <nav>
+    <Header>
+      <NavWrapper>
         <li>
           <img src="" alt="" />
         </li>
 
-        <h1 id="logo">
+        <Logo id="logo">
           <NavLink to="/" id="logo">
             Organic Food
           </NavLink>
-        </h1>
-        <ul className="nav-links">
+        </Logo>
+        <NavLinks>
           <li>
-            <NavLink exact to="/" activeClassName="current">
+            <NavLink exact to="/" activeClassName="active">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" activeClassName="current">
+            <NavLink to="/about" activeClassName="active">
               About
             </NavLink>
           </li>
           <li>
-            <NavLink to="/blog" activeClassName="current">
+            <NavLink to="/blog" activeClassName="active">
               Blog
             </NavLink>
           </li>
           <li>
-            <NavLink to="/store" activeClassName="current">
+            <NavLink to="/store" activeClassName="active">
               Store
             </NavLink>
           </li>
           <li>
-            <NavLink to="/login" activeClassName="current">
+            <NavLink to="/login" activeClassName="active">
               Login
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" activeClassName="current">
+            <NavLink to="/contact" activeClassName="active">
               Contact
             </NavLink>
           </li>
           {checkIfZero()}
-        </ul>
-      </nav>
-    </header>
+        </NavLinks>
+      </NavWrapper>
+    </Header>
   );
 };
 

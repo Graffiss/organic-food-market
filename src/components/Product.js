@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { useContext } from "react";
+import AppContext from "../context/AppContext";
+import { Button } from "./atoms/Button/Button";
+import styled from "styled-components";
+import { HeaderTwo } from "./atoms/HeaderTwo/HeaderTwo";
+import { HeaderThree } from "./atoms/HeaderThree/HeaderThree";
+import { Paragraph } from "./atoms/Paragraph/Paragraph";
 
-class Product extends React.Component {
-	handleClick = () => {
-		this.props.addToCart(this.props.index);
-	};
-	render() {
-		const { image, name, desc, price, status } = this.props.info;
-		const isAvailable = status === 'available';
-		return (
-			<li className="menu-product">
-				<img src={image} alt={name} />
-				<h2>{name}</h2>
-				<p>{desc}</p>
-				<h3>{price}</h3>
-				<button disabled={!isAvailable} onClick={this.handleClick}>
-					{isAvailable ? 'Add to cart' : 'Unavailable'}
-				</button>
-			</li>
-		);
-	}
-}
+const ListWrapper = styled.li`
+  border-bottom: 2px solid black;
+  margin: 2rem;
+  font-size: 1.7rem;
+`;
+
+const Image = styled.img`
+  width: 200px;
+`;
+
+const Product = ({ index }) => {
+  const context = useContext(AppContext);
+  const { products, addToCart } = context;
+
+  const info = products[index];
+  const { image, name, desc, price, status } = info;
+  const handleClick = () => {
+    addToCart(index);
+  };
+
+  const isAvailable = status === "available";
+  return (
+    <ListWrapper>
+      <Image src={image} alt={name} />
+      <HeaderTwo>{name}</HeaderTwo>
+      <Paragraph>{desc}</Paragraph>
+      <HeaderThree>{price}</HeaderThree>
+      <Button disabled={!isAvailable} onClick={handleClick}>
+        {isAvailable ? "Add to cart" : "Unavailable"}
+      </Button>
+    </ListWrapper>
+  );
+};
 
 export default Product;
