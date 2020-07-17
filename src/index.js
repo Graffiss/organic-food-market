@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./css/style.css";
 import * as serviceWorker from "./serviceWorker";
 import RootView from "./views/RootView";
 import { BrowserRouter } from "react-router-dom";

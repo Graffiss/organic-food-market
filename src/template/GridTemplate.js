@@ -10,8 +10,8 @@ const GridWrapper = styled.div`
   margin: auto;
 `;
 
-const GridTemplate = () => {
-  return <GridWrapper></GridWrapper>;
+const GridTemplate = ({ children }) => {
+  return <GridWrapper>{children}</GridWrapper>;
 };
 
 export default GridTemplate;

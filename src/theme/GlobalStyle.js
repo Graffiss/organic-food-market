@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900&display=swap');
+
     *, *::before, *::after {
         margin: 0;
         padding: 0;
@@ -15,13 +17,14 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
         font-size: 1.6rem;
-        font-family: 'Fira Sans', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: white;
         
     }
 
     a {
   text-decoration: none;
+  color: #000;
 }
 
 li {

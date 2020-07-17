@@ -58,32 +58,32 @@ const GlobalState = ({ children }) => {
     setCartVisible(!cartVisible);
   };
 
-  const handleClickOutsideCart = () => {
-    if (!cartVisible) {
-      // attach/remove event handler
-      document.addEventListener("click", handleOutsideClick, false);
-    } else {
-      document.removeEventListener("click", handleOutsideClick, false);
-    }
-    setCartVisible(!cartVisible);
-  };
-
-  const handleOutsideClick = (e) => {
+  /*  const handleOutsideClick = (e) => {
     // ignore clicks on the component itself
-    if (this.node.contains(e.target)) {
+    if (window.node.contains(e.target)) {
       return;
     }
 
     handleClickOutsideCart();
   };
 
+  const handleClickOutsideCart = () => {
+    if (!cartVisible) {
+      // attach/remove event handler
+      document.addEventListener("click", handleOutsideClick(), false);
+    } else {
+      document.removeEventListener("click", handleOutsideClick(), false);
+    }
+    setCartVisible(!cartVisible);
+  }; */
+
   const sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0);
 
   const context = {
     products,
     sumValues,
-    handleOutsideClick,
-    handleClickOutsideCart,
+    /* handleOutsideClick,
+    handleClickOutsideCart, */
     cartOpen,
     saveProductsList,
     addToCart,

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import AppContext from "../../../context/AppContext";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const CartVisible = styled.div`
   background: #ffc547;
@@ -11,7 +11,14 @@ const CartVisible = styled.div`
   left: 70%;
   transition: transform 1s ease;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
-  z-index: 99;
+  z-index: 1;
+
+  ${({ hidden }) =>
+    hidden &&
+    css`
+      transform: translateX(-100%);
+      display: none;
+    `}
 `;
 
 const CartHidden = styled.div`
@@ -19,28 +26,9 @@ const CartHidden = styled.div`
   display: none;
 `;
 
-const CartSummary = styled.div`
-  background: #01abce;
-  border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  -webkit-border-radius: 0.8em;
-  color: #ffffff;
-  display: inline-block;
-  line-height: 1.2em;
-  margin-right: 5px;
-  text-align: center;
-  width: 1.2em;
-`;
-
 const Cart = () => {
   const context = useContext(AppContext);
-  const {
-    order,
-    products,
-    cartVisible,
-    removeProductFromOrder,
-    sumValues,
-  } = context;
+  const { order, products, removeProductFromOrder, sumValues } = context;
 
   const cartRef = React.createRef();
 
@@ -75,15 +63,12 @@ const Cart = () => {
   }, 0);
 
   return (
-    <div
-      className={cartVisible ? <CartVisible /> : <CartHidden />}
-      ref={cartRef}
-    >
+    <CartVisible ref={cartRef}>
       <h2>Shopping cart</h2>
       <ul>{orderID.map(summaryFunc)}</ul>
       <div>{summary}</div>
       <div>Number of items in the cart: {sumValues(order)}</div>
-    </div>
+    </CartVisible>
   );
 };
 

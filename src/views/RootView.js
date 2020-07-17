@@ -2,7 +2,6 @@ import React from "react";
 import Store from "./StoreView";
 import Nav from "../components/organisms/Nav/Nav";
 import Home from "./HomeView";
-import Cart from "../components/organisms/Cart/Cart";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./NotFoundView";
 import Contact from "./ContactView";
@@ -99,22 +98,17 @@ const Root = () => (
 
   <GlobalState>
     <MainTemplate>
-      <Router>
-        <Nav />
-        <div ref={(node) => node}>
-          <Cart />
-        </div>
-        <ContentTemplate>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/store" component={Store} />
-            <Route path="/login" component={Login} />
-            <Route path="/contact" render={(props) => <Contact {...props} />} />
-            <Route component={NotFound} />
-          </Switch>
-        </ContentTemplate>
-      </Router>
+      <Nav />
+      <ContentTemplate>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/store" component={Store} />
+          <Route path="/login" component={Login} />
+          <Route path="/contact" component={Contact} />
+          <Route component={NotFound} />
+        </Switch>
+      </ContentTemplate>
     </MainTemplate>
   </GlobalState>
 );
