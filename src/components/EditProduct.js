@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AppContext from "../context/AppContext";
+import AppContext from "../store/AppContext";
 import styled from "styled-components";
 
 const FormWrapper = styled.div`

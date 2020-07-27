@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AppContext from "../context/AppContext";
+import AppContext from "../store/AppContext";
 import { Button } from "./atoms/Button/Button";
 import styled from "styled-components";
 import { HeaderTwo } from "./atoms/HeaderTwo/HeaderTwo";

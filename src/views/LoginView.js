@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LoginForm from "../components/organisms/LoginForm/LoginForm";
 import Inventory from "./InventoryView";
-import { auth } from "../firebase";
+import { auth } from "../config/firebaseConfig/firebase";
 
 const Login = () => {
   const [currentUser, setCurrentUser] = useState(null);

@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
-import { auth } from "../../../firebase";
+import { auth } from "../../../config/firebaseConfig/firebase";
 
 const LoginButton = styled.button`
   background: #ff7352;

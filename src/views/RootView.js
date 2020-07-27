@@ -9,7 +9,10 @@ import About from "./AboutView";
 import Login from "./LoginView";
 import MainTemplate from "../template/MainTemplate";
 import ContentTemplate from "../template/ContentTemplate";
-import GlobalState from "../context/GlobalState";
+import GlobalState from "../store/GlobalState";
+import { rrfProps, store } from "../store/store";
+import { Provider } from "react-redux";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 
 const Root = () => (
   /* state = {
@@ -95,22 +98,25 @@ const Root = () => (
   };
 
   sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b, 0); */
-
-  <GlobalState>
-    <MainTemplate>
-      <Nav />
-      <ContentTemplate>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/store" component={Store} />
-          <Route path="/login" component={Login} />
-          <Route path="/contact" component={Contact} />
-          <Route component={NotFound} />
-        </Switch>
-      </ContentTemplate>
-    </MainTemplate>
-  </GlobalState>
+  <Provider store={store}>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <GlobalState>
+        <MainTemplate>
+          <Nav />
+          <ContentTemplate>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/store" component={Store} />
+              <Route path="/login" component={Login} />
+              <Route path="/contact" component={Contact} />
+              <Route component={NotFound} />
+            </Switch>
+          </ContentTemplate>
+        </MainTemplate>
+      </GlobalState>
+    </ReactReduxFirebaseProvider>
+  </Provider>
 );
 
 export default Root;

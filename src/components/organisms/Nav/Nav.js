@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import AppContext from "../../../context/AppContext";
+import AppContext from "../../../store/AppContext";
 import styled from "styled-components";
 import Cart from "../Cart/Cart";
 
