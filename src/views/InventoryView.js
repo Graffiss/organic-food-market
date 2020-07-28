@@ -15,8 +15,8 @@ const InventoryView = () => {
   return (
     <div>
       <h1>INVENTORY</h1>
-      {Object.keys(products).map((key) => (
-        <EditProduct key={key} index={key} />
+      {products.map((product) => (
+        <EditProduct key={product.id} />
       ))}
       <AddProduct />
     </div>

@@ -16,14 +16,13 @@ const Image = styled.img`
   width: 200px;
 `;
 
-const Product = ({ index }) => {
+const Product = (props) => {
   const context = useContext(AppContext);
-  const { products, addToCart } = context;
+  const { addToCart } = context;
 
-  const info = products[index];
-  const { image, name, desc, price, status } = info;
+  const { id, image, name, desc, price, status } = props;
   const handleClick = () => {
-    addToCart(index);
+    addToCart(id);
   };
 
   const isAvailable = status === "available";
