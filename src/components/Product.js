@@ -19,8 +19,8 @@ const Image = styled.img`
 const Product = (props) => {
   const context = useContext(AppContext);
   const { addToCart } = context;
-
   const { id, image, name, desc, price, status } = props;
+
   const handleClick = () => {
     addToCart(id);
   };

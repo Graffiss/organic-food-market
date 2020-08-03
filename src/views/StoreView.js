@@ -1,24 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import Product from "../components/Product";
-import AppContext from "../store/AppContext";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import products from "../products-database";
 
 const StoreView = (props) => {
-  const { products2 } = props;
-  const context = useContext(AppContext);
-  const { products } = context;
+  const { products } = props;
   return (
     <div>
       <ul>
-        {products2.map((product) => (
+        {products.map((product) => (
           <Product
             key={product.id}
             name={product.name}
             image={product.image}
-            {...props}
+            price={product.price}
+            status={product.status}
+            desc={product.desc}
           />
         ))}
       </ul>
@@ -29,7 +28,7 @@ const StoreView = (props) => {
 const mapStateToProps = (state) => {
   console.log("State from redux", state);
   return {
-    products2: state.firestore.ordered.products || products,
+    products: state.firestore.ordered.products || products,
   };
 };
 

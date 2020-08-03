@@ -2,22 +2,19 @@ export const createProduct = (product) => {
   return (dispatch, getState, { getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const userId = getState().firebase.auth.uid;
+
     firestore
       .collection("products")
       .add({
         ...product,
-        desc: "Some description",
-        id: 12345,
-        image: "photo url",
-        name: "Some name",
-        price: 5,
-        status: "available",
       })
       .then(() => {
-        dispatch({ type: "CREATE_PROJECT_SUCCESS" });
+        dispatch({ type: "CREATE_PRODUCT_SUCCESS" });
       })
       .catch((err) => {
-        dispatch({ type: "CREATE_PROJECT_ERROR" }, err);
+        dispatch({ type: "CREATE_PRODUCT_ERROR" }, err);
       });
   };
 };

@@ -1,6 +1,9 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
 import { auth } from "../../../config/firebaseConfig/firebase";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { signUp } from "../../../store/actions/authActions";
 
 const LoginButton = styled.button`
   background: #ff7352;
@@ -62,7 +65,7 @@ const LoginForm = () => {
       />
       <input
         onChange={handleInputChange}
-        placeholder="********"
+        placeholder="Your password should be at least 6 characters long"
         id="password-input"
         type="password"
         name="password"
@@ -80,4 +83,17 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (creds) => dispatch(signUp(creds)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
