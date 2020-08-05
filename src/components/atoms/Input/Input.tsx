@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Input = styled.input`
+export const Input = styled.input<{ textarea: boolean }>`
   width: 30rem;
   height: 4rem;
   border: 1px solid #ffc547;

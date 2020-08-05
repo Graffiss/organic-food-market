@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 const GridWrapper = styled.div`
@@ -10,7 +10,11 @@ const GridWrapper = styled.div`
   margin: auto;
 `;
 
-const GridTemplate = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+const GridTemplate = ({ children }: Props) => {
   return <GridWrapper>{children}</GridWrapper>;
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import GlobalStyle from "../theme/GlobalStyle";
 
@@ -26,8 +26,11 @@ const Wrapper = styled.div`
   overflow: hidden;
   background-color: #ffc547;
 `;
+interface Props {
+  children: ReactNode;
+}
 
-const MainTemplate = ({ children }) => {
+const MainTemplate = ({ children }: Props) => {
   return (
     <Background>
       <Wrapper>

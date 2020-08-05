@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import GridTemplate from "../template/GridTemplate";
+import GridTemplate from "../template/GridTemplate.tsx";
 
 const Image = styled.img`
   width: 100%;
