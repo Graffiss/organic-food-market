@@ -2,7 +2,16 @@ const initState = {
   authError: null,
 };
 
-const authReducer = (state = initState, action) => {
+type Error = {
+  message: string;
+};
+
+type Action = {
+  type: string;
+  err: Error;
+};
+
+const authReducer = (state = initState, action: Action) => {
   switch (action.type) {
     case "LOGIN_ERROR":
       return {

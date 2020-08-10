@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -9,11 +9,7 @@ const Wrapper = styled.div`
   margin: auto;
 `;
 
-interface Props {
-  children: ReactNode;
-}
-
-const ContentTemplate = ({ children }: Props) => {
+const ContentTemplate: React.FC = ({ children }) => {
   return <Wrapper>{children}</Wrapper>;
 };
 

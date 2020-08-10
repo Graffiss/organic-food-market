@@ -5,7 +5,11 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import products from "../products-database";
 
-const StoreView = (props) => {
+type Props = {
+  products: Array<T>;
+};
+
+const StoreView: React.FC<Props> = (props) => {
   const { products } = props;
   return (
     <div>

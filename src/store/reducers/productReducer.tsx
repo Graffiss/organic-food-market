@@ -1,6 +1,10 @@
 const initState = {};
 
-const productReducer = (state = initState, action) => {
+type Action = {
+  type: string;
+};
+
+const productReducer = (state = initState, action: Action) => {
   switch (action.type) {
     case "CREATE_PRODUCT_SUCCESS":
       console.log("create product success");

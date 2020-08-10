@@ -26,6 +26,7 @@
     "redux-firestore": "^0.13.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.1",
+    "typesafe-actions": "^5.1.0",
     "typescript": "^3.9.7"
   },
   "scripts": {
