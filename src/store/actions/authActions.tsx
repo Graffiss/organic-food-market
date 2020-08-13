@@ -1,5 +1,7 @@
+import { Dispatch } from "redux";
+
 export const signIn = (credentials) => {
-  return (dispatch, getState, { getFirebase }) => {
+  return (dispatch: Dispatch, { getFirebase }) => {
     const firebase = getFirebase();
 
     firebase
@@ -15,7 +17,7 @@ export const signIn = (credentials) => {
 };
 
 export const signOut = () => {
-  return (dispatch, getState, { getFirebase }) => {
+  return (dispatch: Dispatch, { getFirebase }) => {
     const firebase = getFirebase();
 
     firebase
@@ -28,7 +30,7 @@ export const signOut = () => {
 };
 
 export const signUp = (newUser) => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+  return (dispatch: Dispatch, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
 

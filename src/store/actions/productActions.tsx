@@ -1,9 +1,11 @@
+import { Dispatch } from "redux";
+
 export const createProduct = (product) => {
-  return (dispatch, getState, { getFirestore }) => {
+  return (dispatch: Dispatch, getState, { getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
-    const profile = getState().firebase.profile;
-    const userId = getState().firebase.auth.uid;
+    /*  const profile = getState().firebase.profile;
+    const userId = getState().firebase.auth.uid; */
 
     firestore
       .collection("products")
