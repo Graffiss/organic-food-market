@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 
 export const createProduct = (product) => {
-  return (dispatch: Dispatch, getState, { getFirestore }) => {
+  return (dispatch: Dispatch, { getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
     /*  const profile = getState().firebase.profile;
@@ -15,7 +15,7 @@ export const createProduct = (product) => {
       .then(() => {
         dispatch({ type: "CREATE_PRODUCT_SUCCESS" });
       })
-      .catch((err) => {
+      .catch((err: string) => {
         dispatch({ type: "CREATE_PRODUCT_ERROR" }, err);
       });
   };

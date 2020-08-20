@@ -1,7 +1,43 @@
 import { Dispatch } from "redux";
 
-export const signIn = (credentials) => {
-  return (dispatch: Dispatch, { getFirebase }) => {
+type Creds = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+};
+
+type Auth = {
+  signInWithEmailAndPassword: (email: string, pass: string) => Promise<string>;
+  signOut: () => Promise<string>;
+  createUserWithEmailAndPassword: (email: string, pass: string) => Promise<any>;
+};
+
+type FirebaseObj = {
+  auth: () => Auth;
+};
+
+/* type Set = {
+  firstName: string;
+  lastName: string;
+  initials: string;
+}; */
+
+type Document = {
+  doc: (id: number) => any;
+};
+
+type FirestoreObj = {
+  collection: (user: string) => Document;
+};
+
+type FirebaseFunc = {
+  getFirebase: () => FirebaseObj;
+  getFirestore: () => FirestoreObj;
+};
+
+export const signIn = (credentials: Creds) => {
+  return (dispatch: Dispatch, { getFirebase }: FirebaseFunc) => {
     const firebase = getFirebase();
 
     firebase
@@ -10,14 +46,14 @@ export const signIn = (credentials) => {
       .then(() => {
         dispatch({ type: "LOGIN_SUCCESS" });
       })
-      .catch((err) => {
+      .catch((err: string) => {
         dispatch({ type: "LOGIN_ERROR", err });
       });
   };
 };
 
 export const signOut = () => {
-  return (dispatch: Dispatch, { getFirebase }) => {
+  return (dispatch: Dispatch, { getFirebase }: FirebaseFunc) => {
     const firebase = getFirebase();
 
     firebase
@@ -29,8 +65,8 @@ export const signOut = () => {
   };
 };
 
-export const signUp = (newUser) => {
-  return (dispatch: Dispatch, { getFirebase, getFirestore }) => {
+export const signUp = (newUser: Creds) => {
+  return (dispatch: Dispatch, { getFirebase, getFirestore }: FirebaseFunc) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
 
@@ -50,7 +86,7 @@ export const signUp = (newUser) => {
       .then(() => {
         dispatch({ type: "SIGNUP_SUCCESS" });
       })
-      .catch((err) => {
+      .catch((err: string) => {
         dispatch({ type: "SIGNUP_ERROR", err });
       });
   };

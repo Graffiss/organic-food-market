@@ -1,4 +1,4 @@
-import { StateType, ActionType } from "typesafe-actions";
+/* import { StateType, ActionType } from "typesafe-actions";
 
 declare module "MyTypes" {
   export type Store = StateType<typeof import("./store")>;
@@ -20,3 +20,4 @@ declare module "typesafe-actions" {
     ProductAction: ActionType<typeof import("./actions/productActions")>;
   }
 }
+ */
